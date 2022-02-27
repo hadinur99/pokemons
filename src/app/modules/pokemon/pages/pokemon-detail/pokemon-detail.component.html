@@ -2,12 +2,11 @@
     <div class="container">
         <div class="text-center">
             <h1>
-                <b>DETAILS</b>
+                <b>{{pokemon.name?.toUpperCase()}} DETAILS</b>
             </h1>
         </div>
         <div style="display: flex; justify-content: center;">
             <div class="card" fxFlex.md="50%" fxFlex.lg="50%" fxFlex.xl="50%" fxFlex.sm="100%" fxFlex.xm="100%">
-                <h2>{{pokemon.name?.toUpperCase()}}</h2>
                 <img src="{{pokemon.imageUrl}}" width="150" alt="asd">
                 <div>
                     <div class="card-content">
@@ -15,7 +14,7 @@
                             <tbody>
                                 <tr>
                                     <td>Name</td>
-                                    <td><strong>{{pokemon.name}}</strong></td>
+                                    <td><strong>{{pokemon.name?.toUpperCase()}}</strong></td>
                                 </tr>
                                 <tr>
                                     <td>Weight</td>
@@ -26,19 +25,35 @@
                                     <td><strong>{{pokemon.height}}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td>Ability</td>
-                                    <td><strong>{{pokemon.abilities}}</strong></td>
+                                    <td>Types</td>
+                                    <td>
+                                        <mat-chip-list class="row justify-content-center">
+                                            <mat-chip color="primary" selected *ngFor="let type of pokemon.types">{{type}}</mat-chip>
+                                        </mat-chip-list>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>Move</td>
-                                    <td><strong>{{pokemon.moves}}</strong></td>
+                                    <td>Abilities</td>
+                                    <td>
+                                        <mat-chip-list class="row justify-content-center">
+                                            <mat-chip color="accent" selected *ngFor="let ability of pokemon.abilities">{{ability}}</mat-chip>
+                                        </mat-chip-list>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Moves</td>
+                                    <td>
+                                        <mat-chip-list class="row justify-content-center">
+                                            <mat-chip color="warn" selected *ngFor="let move of pokemon.moves">{{move}}</mat-chip>
+                                        </mat-chip-list>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <button mat-raised-button color="primary">Catch</button>
+                <div class="row justify-content-center" style="margin-top: 20px;">
+                    <button [swal]="['Oops!', 'This is not implemented yet :/', 'warning']" mat-raised-button color="primary">Catch Pokemon</button>
                 </div>
             </div>
         </div>

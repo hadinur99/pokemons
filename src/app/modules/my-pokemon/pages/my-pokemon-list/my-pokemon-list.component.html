@@ -1,1 +1,27 @@
-<p>my-pokemon-list works!</p>
+<div class="wrapper" style="padding:30px">
+    <div class="container">
+        <div class="text-center">
+            <h1>
+                <b>MY POKEMON LIST</b>
+            </h1>
+        </div>
+        <div fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="10px" style="justify-content: center;">
+            <div *ngIf="!myPokemonExist; else myPokemon">
+                You don't have any pokemon yet.
+            </div>
+            <ng-template #myPokemon>
+                <div #myPokemon class="card" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+                    fxFlex.gt-md="0 1 calc(25%-10px)">
+                    <img src="" alt="poke" width="200">
+                    <div class="card-content">
+                        <h4><b>NAME</b></h4>
+                    </div>
+                </div>
+            </ng-template>
+
+
+
+        </div>
+
+    </div>
+</div>

@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const sharedModule = [
   FlexLayoutModule,
@@ -13,7 +15,9 @@ const sharedModule = [
   MatIconModule,
   MatButtonModule,
   MatCardModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatChipsModule,
+  SweetAlert2Module
 ]
 
 @NgModule({

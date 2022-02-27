@@ -19,7 +19,7 @@ export class PokemonDetailComponent implements OnInit {
     private pokemonService: PokemonService,
     private router: Router,
     private route: ActivatedRoute
-  ) { 
+  ) {
     this.pokemonId = this.route.snapshot.params.id;
   }
 
@@ -29,22 +29,23 @@ export class PokemonDetailComponent implements OnInit {
 
   public getDetailPokemon() {
     this.pokemonService.getDetailsPokemon(this.pokemonId)
-    .pipe(untilDestroyed(this))
-    .subscribe((result:any) => {
-      console.log(result)
-      this.pokemon.id = result.id;
-      this.pokemon.name = result.name;
-      this.pokemon.imageUrl = result.sprites.front_default;
-      this.pokemon.weight = result.weight;
-      this.pokemon.height = result.height;
-      result.moves.map((data:any) => {
-        this.pokemon.moves.push(data.move.name);
+      .pipe(untilDestroyed(this))
+      .subscribe((result: any) => {
+        this.pokemon.id = result.id;
+        this.pokemon.name = result.name;
+        this.pokemon.imageUrl = result.sprites.front_default;
+        this.pokemon.weight = result.weight;
+        this.pokemon.height = result.height;
+        result.types.slice(-2).map((data:any) => {
+          this.pokemon.types.push(data.type.name);
+        })
+        result.moves.slice(-2).map((data: any) => {
+          this.pokemon.moves.push(data.move.name);
+        })
+        result.abilities.slice(-3).map((data: any) => {
+          this.pokemon.abilities.push(data.ability.name);
+        })
       })
-      result.abilities.map((data:any) => {
-        this.pokemon.abilities.push(data.ability.name);
-      })
-      console.log(this.pokemon)
-      })
-    }
+  }
 
 }

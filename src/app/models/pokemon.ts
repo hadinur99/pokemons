@@ -1,8 +1,9 @@
 export class Pokemon {
     
-    id!: String;
+    id!: number;
     name!: String;
     imageUrl!: String;
+    types: Array<String> = [];
     weight!: number;
     height!: number;
     moves: Array<string> = [];

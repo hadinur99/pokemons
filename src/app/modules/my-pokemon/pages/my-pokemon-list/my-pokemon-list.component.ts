@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyPokemonListComponent implements OnInit {
 
+  myPokemonExist: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
