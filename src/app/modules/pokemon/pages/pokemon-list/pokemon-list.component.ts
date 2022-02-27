@@ -45,14 +45,14 @@ export class PokemonListComponent implements OnInit {
     })
   }
   
-  public goToDetails(pokemonId: any){
+  public pokemonDetails(pokemonId: any){
     this.router.navigate(['/pokemon/', pokemonId])
   }
 
   public getMorePokemon() {
-    this.numberOfPokemon += this.numberMorePokemon;
+    this.numberOfPokemon = this.numberMorePokemon;
     this.pageNumber += this.numberMorePokemon;
-    this.listOfPokemon(this.numberOfPokemon, this.numberMorePokemon)
+    this.listOfPokemon(this.numberOfPokemon, this.pageNumber)
   }
 
 }

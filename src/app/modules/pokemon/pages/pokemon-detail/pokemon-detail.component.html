@@ -1,1 +1,46 @@
-<p>pokemon-detail works!</p>
+<div class="wrapper" style="padding: 30px;">
+    <div class="container">
+        <div class="text-center">
+            <h1>
+                <b>DETAILS</b>
+            </h1>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <div class="card" fxFlex.md="50%" fxFlex.lg="50%" fxFlex.xl="50%" fxFlex.sm="100%" fxFlex.xm="100%">
+                <h2>{{pokemon.name?.toUpperCase()}}</h2>
+                <img src="{{pokemon.imageUrl}}" width="150" alt="asd">
+                <div>
+                    <div class="card-content">
+                        <table class="table" style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td>Name</td>
+                                    <td><strong>{{pokemon.name}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Weight</td>
+                                    <td><strong>{{ pokemon.weight }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Height</td>
+                                    <td><strong>{{pokemon.height}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Ability</td>
+                                    <td><strong>{{pokemon.abilities}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Move</td>
+                                    <td><strong>{{pokemon.moves}}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <button mat-raised-button color="primary">Catch</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
