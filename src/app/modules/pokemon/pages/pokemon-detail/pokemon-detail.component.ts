@@ -36,13 +36,13 @@ export class PokemonDetailComponent implements OnInit {
         this.pokemon.imageUrl = result.sprites.front_default;
         this.pokemon.weight = result.weight;
         this.pokemon.height = result.height;
-        result.types.slice(-2).map((data:any) => {
+        result.types.map((data:any) => {
           this.pokemon.types.push(data.type.name);
         })
-        result.moves.slice(-2).map((data: any) => {
+        result.moves.map((data: any) => {
           this.pokemon.moves.push(data.move.name);
         })
-        result.abilities.slice(-3).map((data: any) => {
+        result.abilities.map((data: any) => {
           this.pokemon.abilities.push(data.ability.name);
         })
       })
