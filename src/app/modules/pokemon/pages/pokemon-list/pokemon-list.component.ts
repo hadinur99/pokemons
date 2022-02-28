@@ -14,9 +14,9 @@ export class PokemonListComponent implements OnInit {
 
   pokemons: Array<Pokemon> = new Array<Pokemon>();
 
-  numberOfPokemon = 12;
+  numberOfPokemon = 9;
   pageNumber = 0;
-  numberMorePokemon = 12;
+  numberMorePokemon = 9;
 
   private IMAGE_API_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
