@@ -3,6 +3,10 @@ import { PokemonService } from '../../services/pokemon.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Pokemon } from 'src/app/models/pokemon';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { PokemonState } from '../../stores/reducers/pokemon.reducer';
+import { PokemonActions } from '../../stores/actions/pokemon.actions';
+import { selectPokemon } from '../../stores/selectors/pokemon.selectors';
 
 @UntilDestroy()
 @Component({
@@ -18,34 +22,35 @@ export class PokemonListComponent implements OnInit {
   pageNumber = 0;
   numberMorePokemon = 9;
 
-  private IMAGE_API_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
-
   constructor(
     private pokemonService: PokemonService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private pokemonStore: Store<PokemonState>
+  ) { 
+    this.pokemonStore
+      .pipe(
+        select(selectPokemon),
+        untilDestroyed(this)
+      )
+      .subscribe((pokemons: Array<Pokemon> | null) => {
+        this.pokemons = pokemons || [];
+      })
+   }
 
   ngOnInit(): void {
     this.listOfPokemon(this.numberOfPokemon, this.pageNumber)
   }
 
-  public listOfPokemon(numberOfPokemon: number, pageNumber: number){
-    this.pokemonService.getListPokemon(numberOfPokemon, pageNumber)
-    .pipe(untilDestroyed(this))
-    .subscribe((result:any) => {
-      result?.results.map((data:any) => {
-        let pokemonId = data.url.split(/\//)[6];
-        const pokemon: Pokemon = new Pokemon();
-        pokemon.id = pokemonId;
-        pokemon.name = data.name;
-        pokemon.imageUrl = this.IMAGE_API_URL + pokemonId + '.png';
-
-        this.pokemons.push(pokemon);
-      })
-    })
+  public listOfPokemon(numberOfPokemon: number, pageNumber: number) {
+   
+    this.pokemonStore.dispatch(
+      PokemonActions.loadPokemon({
+        numberOfPokemon, pageNumber
+      }))
   }
-  
-  public pokemonDetails(pokemonId: any){
+
+
+  public pokemonDetails(pokemonId: any) {
     this.router.navigate(['/pokemon/', pokemonId])
   }
 

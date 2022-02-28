@@ -5,6 +5,10 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PokemonListComponent } from './pages/pokemon-list/pokemon-list.component';
 import { PokemonDetailComponent } from './pages/pokemon-detail/pokemon-detail.component';
+import { PokemonEffects } from './stores/effects/pokemon.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { Store, StoreModule } from '@ngrx/store';
+import { pokemonFeatureKey, pokemonReducer } from './stores/reducers/pokemon.reducer';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,15 @@ import { PokemonDetailComponent } from './pages/pokemon-detail/pokemon-detail.co
   imports: [
     CommonModule,
     PokemonRoutingModule,
-    SharedModule
+    SharedModule,
+    EffectsModule.forFeature([
+      PokemonEffects
+    ]),
+    StoreModule.forFeature(
+      pokemonFeatureKey,
+      pokemonReducer
+    )
+    
   ]
 })
 export class PokemonModule { }
