@@ -63,12 +63,15 @@ export class PokemonDetailComponent implements OnInit {
           title: 'Give the pokemon a nickname',
           input: 'text',
         }).then((result) => {
-          console.log(result.value)
+          
+          // this.pokemon.nickName = result.value;
+          
           this.pokemonStore.dispatch(
-            PokemonActions.catchedPokemons({
-              pokemons: [this.pokemon]
+            PokemonActions.setCatchedPokemons({
+              setCatchedPokemons: [this.pokemon]
             })
           )
+          this.router.navigate(['/my-pokemon'])
         })
       })
     } else {

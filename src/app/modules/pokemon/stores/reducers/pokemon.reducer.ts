@@ -49,11 +49,11 @@ export const _pokemonReducer = createReducer(
     }
   ),
   on(
-    PokemonActions.catchedPokemons,
-    (state: PokemonState, { pokemons }) => {
+    PokemonActions.setCatchedPokemons,
+    (state: PokemonState, { setCatchedPokemons }) => {
       return {
         ...state,
-        pokemons: [...state.pokemons || [], ...pokemons]
+        catchedPokemons: [...state.catchedPokemons || [], ...setCatchedPokemons]
       }  
     }
   )

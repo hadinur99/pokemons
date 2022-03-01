@@ -12,7 +12,8 @@ export const PokemonActions = {
 
   resetSelectedPokemon: createAction('[Pokemon] Reset Selected Pokemon Id'),
 
-  catchedPokemons: createAction('[Pokemon] Catched Pokemon', props<{ pokemons: Pokemon[] }>()),
+  loadCatchedPokemons: createAction('[Pokemon] Catched Pokemon', props<{ loadCatchedPokemon: Pokemon[] }>()),
+  setCatchedPokemons: createAction('[Pokemon] Set Catched Pokemon', props<{ setCatchedPokemons: Pokemon[] }>()),
 
 }
 

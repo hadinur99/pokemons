@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonService } from '../../services/pokemon.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Pokemon } from 'src/app/models/pokemon';
 import { Router } from '@angular/router';
@@ -23,7 +22,6 @@ export class PokemonListComponent implements OnInit {
   numberMorePokemon = 9;
 
   constructor(
-    private pokemonService: PokemonService,
     private router: Router,
     private pokemonStore: Store<PokemonState>
   ) { 

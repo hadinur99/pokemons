@@ -11,12 +11,11 @@ import { PokemonService } from '../pokemon.service';
 export class PokemonImplService implements PokemonService {
 
   private POKE_API_URL = 'https://pokeapi.co/api/v2/pokemon/';
-  private IMAGE_API_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
-  private DESCRIPTION_API_URL = 'https://pokeapi.co/api/v2/pokemon-species/';
 
   constructor(
     private http: HttpClient
   ) { }
+  
 
   public getListPokemon(numberOfPokemon: number, pageNumber: number): Observable<Pokemon> {
     return this.http.get<Pokemon>(this.POKE_API_URL + '?limit=' + numberOfPokemon + '&offset=' + pageNumber)

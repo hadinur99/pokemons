@@ -14,7 +14,7 @@ export const selectCurrentPokemon = createSelector(
     (state: PokemonState) => state.selectedPokemon
 )
 
-export const catchedPokemons = createSelector(
+export const selectCatchedPokemons = createSelector(
     SelectPokemonState,
     (state: PokemonState) => state.catchedPokemons
 )
