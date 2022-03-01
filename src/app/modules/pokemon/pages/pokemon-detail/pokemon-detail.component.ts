@@ -4,6 +4,10 @@ import { PokemonService } from '../../services/pokemon.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Pokemon } from 'src/app/models/pokemon';
 import Swal from 'sweetalert2';
+import { select, Store } from '@ngrx/store';
+import { PokemonState } from '../../stores/reducers/pokemon.reducer';
+import { PokemonActions } from '../../stores/actions/pokemon.actions';
+import { selectCurrentPokemon } from '../../stores/selectors/pokemon.selectors';
 
 @UntilDestroy()
 @Component({
@@ -19,9 +23,19 @@ export class PokemonDetailComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private pokemonStore: Store<PokemonState>
   ) {
     this.pokemonId = this.route.snapshot.params.id;
+
+    this.pokemonStore
+      .pipe(
+        select(selectCurrentPokemon),
+        untilDestroyed(this)
+      )
+      .subscribe((pokemon: Pokemon | null) => {
+        this.pokemon = pokemon || new Pokemon();
+      })
   }
 
   ngOnInit(): void {
@@ -29,24 +43,13 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   public getDetailPokemon() {
-    this.pokemonService.getDetailsPokemon(this.pokemonId)
-      .pipe(untilDestroyed(this))
-      .subscribe((result: any) => {
-        this.pokemon.id = result.id;
-        this.pokemon.name = result.name;
-        this.pokemon.imageUrl = result.sprites.front_default;
-        this.pokemon.weight = result.weight;
-        this.pokemon.height = result.height;
-        result.types.map((data: any) => {
-          this.pokemon.types.push(data.type.name);
-        })
-        result.moves.map((data: any) => {
-          this.pokemon.moves.push(data.move.name);
-        })
-        result.abilities.map((data: any) => {
-          this.pokemon.abilities.push(data.ability.name);
-        })
+    
+    this.pokemonStore.dispatch(
+      PokemonActions.loadSelectedPokemon({
+        pokemonId: this.pokemonId
       })
+    )
+
   }
 
   public catchPokemon() {
@@ -61,6 +64,11 @@ export class PokemonDetailComponent implements OnInit {
           input: 'text',
         }).then((result) => {
           console.log(result.value)
+          this.pokemonStore.dispatch(
+            PokemonActions.catchedPokemons({
+              pokemons: [this.pokemon]
+            })
+          )
         })
       })
     } else {

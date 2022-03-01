@@ -8,13 +8,15 @@ export const pokemonFeatureKey = 'pokemonList';
 export interface PokemonState extends EntityState<Pokemon> {
   pokemons: Array<Pokemon> | null;
   selectedPokemon: Pokemon | null;
+  catchedPokemons: Array<Pokemon> | null;
 }
 
 export const pokemonAdapter: EntityAdapter<Pokemon> = createEntityAdapter<Pokemon>();
 
-export const pokemonInitialState: PokemonState = pokemonAdapter.getInitialState ({
+export const pokemonInitialState: PokemonState = pokemonAdapter.getInitialState({
   pokemons: null,
-  selectedPokemon: null
+  selectedPokemon: null,
+  catchedPokemons: null
 });
 
 export const _pokemonReducer = createReducer(
@@ -44,6 +46,15 @@ export const _pokemonReducer = createReducer(
         ...state,
         selectedPokemon: null
       }
+    }
+  ),
+  on(
+    PokemonActions.catchedPokemons,
+    (state: PokemonState, { pokemons }) => {
+      return {
+        ...state,
+        pokemons: [...state.pokemons || [], ...pokemons]
+      }  
     }
   )
 );

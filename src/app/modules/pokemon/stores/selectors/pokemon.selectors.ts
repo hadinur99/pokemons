@@ -13,3 +13,8 @@ export const selectCurrentPokemon = createSelector(
     SelectPokemonState,
     (state: PokemonState) => state.selectedPokemon
 )
+
+export const catchedPokemons = createSelector(
+    SelectPokemonState,
+    (state: PokemonState) => state.catchedPokemons
+)

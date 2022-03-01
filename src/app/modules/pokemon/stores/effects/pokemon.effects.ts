@@ -45,6 +45,41 @@ export class PokemonEffects {
     )
   )));
 
+  private getSelectedPokemon(pokemon: any): Pokemon {
+    const selectedPokemon: Pokemon = new Pokemon();
+    selectedPokemon.id = pokemon.id;
+    selectedPokemon.name = pokemon.name;
+    selectedPokemon.imageUrl = pokemon.sprites.front_default;
+    selectedPokemon.weight = pokemon.weight;
+    selectedPokemon.height = pokemon.height;
+    pokemon.types.map((data: any) => {
+      selectedPokemon.types.push(data.type.name);
+    })
+    pokemon.moves.map((data: any) => {
+      selectedPokemon.moves.push(data.move.name);
+    })
+    pokemon.abilities.map((data:any) => {
+      selectedPokemon.abilities.push(data.ability.name);
+    })
+    return selectedPokemon;
+  }
+
+  loadSelectedPokemon$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PokemonActions.loadSelectedPokemon),
+      switchMap((action) =>
+        this.pokemonService
+        .getDetailsPokemon(action.pokemonId)
+        .pipe(
+          map((pokemon: any) => {
+            return this.getSelectedPokemon(pokemon);
+          }),
+          map((pokemon: Pokemon) => {
+            return PokemonActions.setSelectedPokemon({ pokemon: pokemon });
+          }))
+        ))
+    );
+
   constructor(
     private actions$: Actions,
     private pokemonService: PokemonService

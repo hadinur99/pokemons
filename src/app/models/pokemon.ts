@@ -8,5 +8,6 @@ export class Pokemon {
     height!: number;
     moves: Array<string> = [];
     abilities: Array<string> = [];
+    nickName!: String;
 
 }
