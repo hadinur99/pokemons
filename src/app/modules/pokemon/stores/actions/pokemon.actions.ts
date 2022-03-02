@@ -6,6 +6,7 @@ export const PokemonActions = {
 
   loadPokemon: createAction('[Pokemon] Load Pokemon', props<{numberOfPokemon: number, pageNumber: number}>()),
   setPokemon: createAction('[Pokemon] Set Pokemon', props<{ pokemons: Pokemon[] }>()),
+  resetPokemon: createAction('[Pokemon] Reset Pokemon'),
   
   loadSelectedPokemon: createAction('[Pokemon] Load Selected Pokemon', props<{ pokemonId: number }>()),
   setSelectedPokemon: createAction('[Pokemon] Set Selected Pokemon', props<{ pokemon: Pokemon }>()),

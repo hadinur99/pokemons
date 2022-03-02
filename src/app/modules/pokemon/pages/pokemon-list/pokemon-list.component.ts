@@ -36,6 +36,7 @@ export class PokemonListComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.resetPokemon(); //prevent to load the first same data
     this.listOfPokemon(this.numberOfPokemon, this.pageNumber)
   }
 
@@ -45,6 +46,10 @@ export class PokemonListComponent implements OnInit {
       PokemonActions.loadPokemon({
         numberOfPokemon, pageNumber
       }))
+  }
+
+  public resetPokemon() {
+    this.pokemonStore.dispatch(PokemonActions.resetPokemon())
   }
 
 

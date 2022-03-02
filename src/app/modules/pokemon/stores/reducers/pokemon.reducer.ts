@@ -49,6 +49,15 @@ export const _pokemonReducer = createReducer(
     }
   ),
   on(
+    PokemonActions.resetPokemon,
+    (state: PokemonState) => {
+      return {
+        ...state,
+        pokemons: null
+      }
+    }
+  ),
+  on(
     PokemonActions.setCatchedPokemons,
     (state: PokemonState, { setCatchedPokemons }) => {
       return {
