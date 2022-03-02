@@ -11,16 +11,15 @@
             </div>
             <ng-template #myPokemon>
                 <div #myPokemon class="card" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
-                    fxFlex.gt-md="0 1 calc(25%-10px)"
-                    *ngFor="let pokemon of pokemons">
+                    fxFlex.gt-md="0 1 calc(25%-10px)" *ngFor="let pokemon of pokemons">
                     <img src="{{pokemon.imageUrl}}" alt="poke" width="200">
                     <div class="card-content">
                         <h2><b>{{ pokemon.name }}</b></h2><br>
-                        <h4><b>NickName</b></h4><br>
+                        <h4><b>Name: {{ pokemon.nickName}}</b></h4><br>
                     </div>
                 </div>
             </ng-template>
-            
+
         </div>
 
     </div>
