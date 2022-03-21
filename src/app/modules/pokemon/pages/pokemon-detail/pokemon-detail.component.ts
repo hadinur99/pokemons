@@ -5,9 +5,9 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Pokemon } from 'src/app/models/pokemon';
 import Swal from 'sweetalert2';
 import { select, Store } from '@ngrx/store';
-import { PokemonState } from '../../stores/reducers/pokemon.reducer';
-import { PokemonActions } from '../../stores/actions/pokemon.actions';
-import { selectCurrentPokemon } from '../../stores/selectors/pokemon.selectors';
+import { PokemonState } from '../../../../stores/reducers/pokemon.reducer';
+import { PokemonActions } from '../../../../stores/actions/pokemon.actions';
+import { selectCurrentPokemon } from '../../../../stores/selectors/pokemon.selectors';
 
 @UntilDestroy()
 @Component({

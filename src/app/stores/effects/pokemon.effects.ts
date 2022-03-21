@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Pokemon } from 'src/app/models/pokemon';
-import { PokemonService } from '../../services/pokemon.service';
+import { PokemonService } from '../../modules/pokemon/services/pokemon.service';
 import { PokemonActions } from '../actions/pokemon.actions';
 import { catchError, exhaustMap, map, mergeMap, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';

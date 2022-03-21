@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { PokemonActions } from '../actions/pokemon.actions';
-import { Pokemon } from '../../../../models/pokemon';
+import { Pokemon } from '../../models/pokemon';
 
 export const pokemonFeatureKey = 'pokemonList';
 

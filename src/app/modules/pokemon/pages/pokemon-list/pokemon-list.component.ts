@@ -3,9 +3,9 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Pokemon } from 'src/app/models/pokemon';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { PokemonState } from '../../stores/reducers/pokemon.reducer';
-import { PokemonActions } from '../../stores/actions/pokemon.actions';
-import { selectPokemon } from '../../stores/selectors/pokemon.selectors';
+import { PokemonState } from '../../../../stores/reducers/pokemon.reducer';
+import { PokemonActions } from '../../../../stores/actions/pokemon.actions';
+import { selectPokemon } from '../../../../stores/selectors/pokemon.selectors';
 
 @UntilDestroy()
 @Component({
@@ -31,6 +31,7 @@ export class PokemonListComponent implements OnInit {
         untilDestroyed(this)
       )
       .subscribe((pokemons: Array<Pokemon> | null) => {
+        console.log(pokemons)
         this.pokemons = pokemons || [];
       })
    }

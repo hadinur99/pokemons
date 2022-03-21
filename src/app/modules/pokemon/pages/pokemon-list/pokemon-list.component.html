@@ -9,10 +9,10 @@
 
             <div class="card" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
                 fxFlex.gt-md="0 1 calc(25%-10px)" *ngFor="let pokemon of pokemons" (click)="pokemonDetails(pokemon.id)">
-                <img src="{{pokemon.imageUrl}}"  alt="{{pokemon.name}}" width="200"
+                <img src="{{pokemon.imageUrl}}" alt="{{pokemon.name}}" width="200"
                     matTooltip="Click for {{[pokemon.name?.toUpperCase()]}} details" matTooltipPosition="right">
                 <div class="card-content">
-                    <h4><b>{{pokemon.name?.toUpperCase()}}</b></h4>
+                    <h4><b>#{{ pokemon.id }} {{pokemon.name?.toUpperCase()}}</b></h4>
                 </div>
             </div>
 
