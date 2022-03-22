@@ -1,5 +1,11 @@
 # PokemonApps
 
+## Features
+1. List of Pokemons and Infinite Scroll
+2. Details information of Pokemon
+3. Catch the pokemon with probability 50:50
+4. Using data state management (NgRx)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
 
 ## Development server
