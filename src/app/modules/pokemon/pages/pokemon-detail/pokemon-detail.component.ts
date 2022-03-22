@@ -19,6 +19,7 @@ export class PokemonDetailComponent implements OnInit {
 
   pokemonId!: number;
   pokemon: Pokemon = new Pokemon();
+  loadData: boolean = false;
 
   constructor(
     private pokemonService: PokemonService,
@@ -34,7 +35,8 @@ export class PokemonDetailComponent implements OnInit {
         untilDestroyed(this)
       )
       .subscribe((pokemon: Pokemon | null) => {
-        this.pokemon = pokemon || new Pokemon();
+        if(pokemon) { this.loadData = true; this.pokemon = pokemon || new Pokemon(); }
+        // this.pokemon = pokemon || new Pokemon();
       })
   }
 

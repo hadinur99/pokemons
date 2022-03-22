@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const sharedModule = [
@@ -17,6 +18,7 @@ const sharedModule = [
   MatCardModule,
   MatTooltipModule,
   MatChipsModule,
+  MatProgressSpinnerModule,
   SweetAlert2Module
 ]
 
