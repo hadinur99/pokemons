@@ -31,7 +31,6 @@ export class PokemonListComponent implements OnInit {
         untilDestroyed(this)
       )
       .subscribe((pokemons: Array<Pokemon> | null) => {
-        console.log(pokemons)
         this.pokemons = pokemons || [];
       })
    }
@@ -62,6 +61,10 @@ export class PokemonListComponent implements OnInit {
     this.numberOfPokemon = this.numberMorePokemon;
     this.pageNumber += this.numberMorePokemon;
     this.listOfPokemon(this.numberOfPokemon, this.pageNumber)
+  }
+
+  public onScroll() {
+    console.log("Srolll")
   }
 
 }

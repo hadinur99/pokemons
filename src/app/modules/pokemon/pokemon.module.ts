@@ -9,6 +9,7 @@ import { PokemonEffects } from '../../stores/effects/pokemon.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
 import { pokemonFeatureKey, pokemonReducer } from '../../stores/reducers/pokemon.reducer';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { pokemonFeatureKey, pokemonReducer } from '../../stores/reducers/pokemon
     StoreModule.forFeature(
       pokemonFeatureKey,
       pokemonReducer
-    )
+    ),
+    InfiniteScrollModule
     
   ]
 })
